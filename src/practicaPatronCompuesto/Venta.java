@@ -39,7 +39,7 @@ public class Venta {
 
 	public double calculaImporteFinal() {
 	
-		return 0;
+		return io.calculaImporteTotal(this);
 	}
 
 	

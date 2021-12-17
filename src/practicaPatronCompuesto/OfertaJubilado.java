@@ -13,7 +13,11 @@ public class OfertaJubilado implements IOferta {
 	public double calculaImporteTotal(Venta venta) {
 		// TODO Auto-generated method stub
 
-		return 0;
+		if (venta.getCliente().getEdad() >= 60) {
+			return venta.getImporte() - (venta.getImporte() * (descuento / 100));
+		} else {
+			return venta.getImporte();
+		}
 	}
 
 }

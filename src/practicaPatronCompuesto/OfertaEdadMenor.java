@@ -13,8 +13,14 @@ public class OfertaEdadMenor implements IOferta {
 	@Override
 	public double calculaImporteTotal(Venta venta) {
 		// TODO Auto-generated method stub
-
-		return 0;
+		
+		if(venta.getCliente().getEdad()>=18) {
+			return venta.getImporte();
+		} else {
+		
+			return venta.getImporte()-(venta.getImporte()*(descuento/100));
+			
+		}
 	}
 
 }

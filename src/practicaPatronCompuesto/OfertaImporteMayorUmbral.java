@@ -1,7 +1,7 @@
 package practicaPatronCompuesto;
 
-public class OfertaImporteMayorUmbral implements IOferta{
-	
+public class OfertaImporteMayorUmbral implements IOferta {
+
 	private double descuento;
 	private double umbral;
 
@@ -15,8 +15,11 @@ public class OfertaImporteMayorUmbral implements IOferta{
 	public double calculaImporteTotal(Venta venta) {
 		// TODO Auto-generated method stub
 
-		return 0;
+		if (venta.getImporte() > umbral) {
+			return venta.getImporte() - this.descuento;
+		} else {
+			return venta.getImporte();
+		}
 	}
-
 
 }
