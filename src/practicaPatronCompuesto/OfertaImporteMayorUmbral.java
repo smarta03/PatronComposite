@@ -15,7 +15,7 @@ public class OfertaImporteMayorUmbral implements IOferta {
 	public double calculaImporteTotal(Venta venta) {
 		// TODO Auto-generated method stub
 
-		if (venta.getImporte() > umbral) {
+		if (venta.getImporte() >= umbral) {
 			return venta.getImporte() - this.descuento;
 		} else {
 			return venta.getImporte();

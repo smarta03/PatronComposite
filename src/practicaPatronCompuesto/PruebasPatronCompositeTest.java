@@ -97,7 +97,7 @@ public class PruebasPatronCompositeTest {
 		// TODO
 		Venta venta = new Venta(cliAna, 100);
 
-		IOferta ofertaSimple = new OfertaImporteMayorUmbral(100.0, 25.0);
+		IOferta ofertaSimple = new OfertaImporteMayorUmbral(150.0, 25.0);
 		venta.setOfertaAplicar(ofertaSimple);
 
 		Assert.assertEquals(venta.calculaImporteFinal(), 100.0, 0.0);
@@ -203,7 +203,7 @@ public class PruebasPatronCompositeTest {
 
 	
 	}
-	/*
+	
 	@Test
 	public void testOfertaCompuesta_DeOtraOfertaCompuesta() {
 	 // caso de test, donde hay una oferta compuesta que a su vez tiene otra oferta compuesta.
@@ -215,7 +215,59 @@ public class PruebasPatronCompositeTest {
 	 //	           -  oferta simple por jubilado del 25%
 	
 		// TODO
-		fail();
-	}*/
+		System.out.println("Caso de prueba COMPUESTO lo mejor para la tienda: aplica descuento por jubilado y por umbral:");
+		Venta venta=new Venta(cliPedro,200);
+		
+		OferCompuestaLoMejorTienda oferC_LoMejorTienda= new OferCompuestaLoMejorTienda();
+		OferCompuestaLoMejorCliente oferC_LoMejorCLiente = new OferCompuestaLoMejorCliente();
+		
+		IOferta oferUmbral1=new OfertaImporteMayorUmbral(100,20);
+		IOferta oferUmbral2=new OfertaImporteMayorUmbral(150,30);
+		IOferta oferJubilado=new OfertaJubilado(25);
+		
+		oferC_LoMejorCLiente.addOferta(oferUmbral2);
+		oferC_LoMejorCLiente.addOferta(oferJubilado);
+		
+		oferC_LoMejorTienda.addOferta(oferUmbral1);
+		oferC_LoMejorTienda.addOferta(oferC_LoMejorCLiente);
+
+		venta.setOfertaAplicar(oferC_LoMejorTienda);
+		
+		Assert.assertEquals(venta.calculaImporteFinal(),180.0,0.0);
+	
+	}
+	
+	@Test
+	public void testOfertaCompuesta_DeOtraOfertaCompuesta2() {
+	 // caso de test, donde hay una oferta compuesta que a su vez tiene otra oferta compuesta.
+	 // Ejemplo:
+     //	    la oferta asociada a la venta es una oferta compuesta "lo mejor para la tienda" de dos ofertas:
+	 //        -  oferta simple umbral con descuento de 150 â‚¬ de rebaja si alcanza 400â‚¬
+     //        -  oferta compuesta "lo mejor para el cliente" formada por :
+	 //            -  oferta simple umbral de 30 â‚¬ de rebaja si alcanza 150â‚¬
+	 //	           -  oferta simple por jubilado del 25%
+	
+		// TODO
+		System.out.println("Caso de prueba COMPUESTO lo mejor para la tienda: aplica descuento por jubilado y por umbral:");
+		Venta venta=new Venta(cliPedro,500);
+		
+		OferCompuestaLoMejorTienda oferC_LoMejorTienda= new OferCompuestaLoMejorTienda();
+		OferCompuestaLoMejorCliente oferC_LoMejorCLiente = new OferCompuestaLoMejorCliente();
+		
+		IOferta oferUmbral1=new OfertaImporteMayorUmbral(400,150);
+		IOferta oferUmbral2=new OfertaImporteMayorUmbral(150,30);
+		IOferta oferJubilado=new OfertaJubilado(25);
+		
+		oferC_LoMejorCLiente.addOferta(oferUmbral2);
+		oferC_LoMejorCLiente.addOferta(oferJubilado);
+		
+		oferC_LoMejorTienda.addOferta(oferUmbral1);
+		oferC_LoMejorTienda.addOferta(oferC_LoMejorCLiente);
+
+		venta.setOfertaAplicar(oferC_LoMejorTienda);
+		
+		Assert.assertEquals(venta.calculaImporteFinal(),375.0,0.0);
+	
+	}
 }
 
