@@ -10,9 +10,17 @@ public class OferCompuestaLoMejorTienda extends OfertaCompuesta{
 	public double calculaImporteTotal(Venta venta) {
 		// TODO Auto-generated method stub
 		
-		return 0;
-	}
+		double impAplica = 0d;
+		double imp = Double.MIN_VALUE;
 
-	
+		for (IOferta item : this.items) {
+			impAplica = item.calculaImporteTotal(venta);
+			if (imp < impAplica) {
+				imp = impAplica;
+			}
+		}
+
+		return imp;
+	}
 
 }

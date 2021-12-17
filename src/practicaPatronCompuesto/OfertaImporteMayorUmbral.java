@@ -5,7 +5,7 @@ public class OfertaImporteMayorUmbral implements IOferta {
 	private double descuento;
 	private double umbral;
 
-	public OfertaImporteMayorUmbral(double d, double u) {
+	public OfertaImporteMayorUmbral(double u, double d) {
 
 		this.descuento = d;
 		this.umbral = u;

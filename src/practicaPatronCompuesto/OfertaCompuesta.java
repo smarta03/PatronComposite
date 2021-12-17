@@ -11,7 +11,7 @@ public abstract class OfertaCompuesta implements IOferta {
 	}
 
 	public void addOferta(IOferta io) {
-
+		items.add(io);
 	}
 	
 	public ArrayList<IOferta> getItems() {
